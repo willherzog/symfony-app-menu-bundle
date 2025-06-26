@@ -1,0 +1,28 @@
+{
+	"name": "willherzog/symfony-app-menu-bundle",
+	"description": "A \"tree builder\" solution for creating a dynamic app navigation menu.",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Will Herzog",
+            "email": "willherzog@gmail.com"
+        }
+    ],
+	"repositories": [
+		{
+			"type": "vcs",
+			"url": "https://github.com/willherzog/generic-tree-builder"
+		}
+	],
+    "require": {
+		"php": "^8.3",
+		"symfony/framework-bundle": "^7.0",
+		"symfony/translation": "^7.0",
+		"symfony/twig-bundle": "^7.0",
+        "willherzog/generic-tree-builder": "dev-main"
+	},
+    "autoload": {
+        "psr-4": { "WHSymfony\\WHAppMenuBundle\\": "src/" }
+    }
+}
