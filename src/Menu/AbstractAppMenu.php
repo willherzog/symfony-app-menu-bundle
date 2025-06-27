@@ -11,13 +11,15 @@ abstract class AbstractAppMenu implements AppMenu
 {
 	private readonly MenuRootNode $rootNode;
 
-	abstract protected function buildMenuTree(MenuRootNode $rootNode): void;
-
-	final public function __construct()
+	/**
+	 * This method should be called from within your extending class's constructor.
+	 * You can then use the MenuRootNode instance it returns to build your menu tree.
+	 */
+	final protected function createRootNode(): MenuRootNode
 	{
 		$this->rootNode = new MenuRootNode();
 
-		$this->buildMenuTree($this->rootNode);
+		return $this->rootNode;
 	}
 
 	/**
