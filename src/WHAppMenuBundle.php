@@ -15,9 +15,15 @@ use WHSymfony\WHAppMenuBundle\Menu\AppMenu;
  */
 class WHAppMenuBundle extends AbstractBundle
 {
+	public function build(ContainerBuilder $container): void
+	{
+		parent::build($container);
+
+		$container->addCompilerPass(new AddAppMenuPass(), PassConfig::TYPE_BEFORE_REMOVING);
+	}
+
 	public function loadExtension(array $config, ContainerConfigurator $container, ContainerBuilder $builder): void
 	{
 		$builder->registerForAutoconfiguration(AppMenu::class)->addTag('wh_app_menu.menu');
-		$builder->addCompilerPass(new AddAppMenuPass(), PassConfig::TYPE_BEFORE_REMOVING);
 	}
 }
