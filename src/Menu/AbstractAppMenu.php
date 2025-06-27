@@ -35,6 +35,6 @@ abstract class AbstractAppMenu implements AppMenu
 	 */
 	final public function getTreeNodes(): iterable
 	{
-		return array_merge($this->rootNode->getLeaves(), $this->rootNode->getBranches());
+		return $this->rootNode->getNodes();
 	}
 }

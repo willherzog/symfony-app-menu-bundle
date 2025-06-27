@@ -15,20 +15,20 @@ class MenuRootNode extends RootNode
 	}
 
 	#[\Override]
-	public function addLeaf(...$leafParams): MenuLeafNode
+	public function addLeaf(string $nodeName, ...$leafParams): MenuLeafNode
 	{
-		return parent::addLeaf(...$leafParams);
+		return parent::addLeaf($nodeName, ...$leafParams);
 	}
 
 	#[\Override]
-	public function addBranch(string $branchName, ...$branchParams): MenuBranchNode
+	public function addBranch(string $nodeName, ...$branchParams): MenuBranchNode
 	{
-		return parent::addBranch($branchName, ...$branchParams);
+		return parent::addBranch($nodeName, ...$branchParams);
 	}
 
 	#[\Override]
-	public function getBranch(string $branchName): ?MenuBranchNode
+	public function getNode(string $nodeName): ?MenuBranchNode
 	{
-		return parent::getBranch($branchName);
+		return parent::getNode($nodeName);
 	}
 }

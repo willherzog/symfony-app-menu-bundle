@@ -11,8 +11,7 @@ use WHPHP\TreeBuilder\RootNodeInterface;
  */
 class MenuBranchNode extends AbstractNode implements BranchNodeInterface, MenuNodeInterface
 {
-	private array $leaves = [];
-	private array $branches = [];
+	private array $nodes = [];
 
 	private bool $isCurrentBranch;
 
@@ -49,14 +48,9 @@ class MenuBranchNode extends AbstractNode implements BranchNodeInterface, MenuNo
 
 		$leaf->setParent($this);
 
-		$this->leaves[] = $leaf;
+		$this->nodes[] = $leaf;
 
 		return $leaf;
-	}
-
-	public function getLeaves(): iterable
-	{
-		return $this->leaves;
 	}
 
 	public function addBranch(...$branchParams): MenuBranchNode
@@ -65,14 +59,14 @@ class MenuBranchNode extends AbstractNode implements BranchNodeInterface, MenuNo
 
 		$branch->setParent($this);
 
-		$this->branches[] = $branch;
+		$this->nodes[] = $branch;
 
 		return $branch;
 	}
 
-	public function getBranches(): iterable
+	public function getNodes(): iterable
 	{
-		return $this->branches;
+		return $this->nodes;
 	}
 
 	public function matchesRoute(string $routeName): bool
@@ -83,8 +77,8 @@ class MenuBranchNode extends AbstractNode implements BranchNodeInterface, MenuNo
 			return true;
 		}
 
-		foreach( $this->leaves as $leaf ) {
-			if( $leaf->matchesRoute($routeName) ) {
+		foreach( $this->nodes as $node ) {
+			if( $node->matchesRoute($routeName) ) {
 				$this->isCurrentBranch = true;
 
 				return true;
