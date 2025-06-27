@@ -7,10 +7,9 @@ use Symfony\Component\HttpFoundation\RequestStack;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
-use WHPHP\TreeBuilder\TreeBuilderInterface;
-
 use WHSymfony\WHAppMenuBundle\Menu\TreeBuilder\{MenuBranchNode,MenuLeafNode};
 use WHSymfony\WHAppMenuBundle\Menu\TreeBuilder\MenuNodeInterface;
+use WHSymfony\WHAppMenuBundle\MenuLoader\ContainerMenuLoader;
 
 /**
  * @author Will Herzog <willherzog@gmail.com>
@@ -22,8 +21,7 @@ class WHAppMenuExtension extends AbstractExtension
 
 	public function __construct(
 		protected readonly RequestStack $requestStack,
-		// TODO: This needs to be an array of user classes extending from AbstractAppMenu, keyed by alias
-		protected readonly TreeBuilderInterface $appMenu
+		protected readonly ContainerMenuLoader $menuLoader
 	) {}
 
 	/**
@@ -32,18 +30,20 @@ class WHAppMenuExtension extends AbstractExtension
 	public function getFunctions(): array
 	{
 		return [
-			new TwigFunction('admin_menu_nodes', [$this, 'getNodes']),
-			new TwigFunction('admin_menu_node_classes', [$this, 'getNodeHtmlClasses'])
+			new TwigFunction('app_menu_nodes', [$this, 'getNodes']),
+			new TwigFunction('app_menu_node_classes', [$this, 'getNodeHtmlClasses'])
 		];
 	}
 
-	public function getNodes(string $menuAlias): iterable
+	/**
+	 * @return array<MenuBranchNode|MenuLeafNode>
+	 */
+	public function getNodes(string $menuName): iterable
 	{
 		$this->currentRoute = null;
 		$this->currentRouteMatched = false;
 
-		// TODO: The $menuAlias argument should be used to identify the desired menu object from those in the constructor
-		return $this->appMenu->getTreeNodes();
+		return $this->menuLoader->get($menuName)->getTreeNodes();
 	}
 
 	public function getNodeHtmlClasses(MenuNodeInterface $node): string
