@@ -4,6 +4,7 @@ namespace WHSymfony\WHAppMenuBundle\Menu\TreeBuilder;
 
 use WHPHP\TreeBuilder\AbstractNode;
 use WHPHP\TreeBuilder\BranchNodeInterface;
+use WHPHP\TreeBuilder\RootNodeInterface;
 
 /**
  * @author Will Herzog <willherzog@gmail.com>
@@ -30,6 +31,11 @@ class MenuBranchNode extends AbstractNode implements BranchNodeInterface, MenuNo
 	public function is_current_branch(): bool
 	{
 		return $this->isCurrentBranch ?? false;
+	}
+
+	public function is_top_level_branch(): bool
+	{
+		return $this->getParent() instanceof RootNodeInterface;
 	}
 
 	public function isAnonymous(): bool
