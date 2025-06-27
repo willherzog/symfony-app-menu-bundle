@@ -2329,12 +2329,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/willherzog/generic-tree-builder.git",
-                "reference": "fe788ab4ba82a576f123ecbfd5391ffb48325263"
+                "reference": "44e1c03531ea83e3eb601d4863c928cb3cf2e54f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/willherzog/generic-tree-builder/zipball/fe788ab4ba82a576f123ecbfd5391ffb48325263",
-                "reference": "fe788ab4ba82a576f123ecbfd5391ffb48325263",
+                "url": "https://api.github.com/repos/willherzog/generic-tree-builder/zipball/44e1c03531ea83e3eb601d4863c928cb3cf2e54f",
+                "reference": "44e1c03531ea83e3eb601d4863c928cb3cf2e54f",
                 "shasum": ""
             },
             "require": {
@@ -2362,7 +2362,7 @@
                 "source": "https://github.com/willherzog/generic-tree-builder/tree/main",
                 "issues": "https://github.com/willherzog/generic-tree-builder/issues"
             },
-            "time": "2025-06-27T22:32:41+00:00"
+            "time": "2025-06-27T22:40:41+00:00"
         }
     ],
     "packages-dev": [],
