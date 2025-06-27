@@ -13,14 +13,23 @@ class MenuBranchNode extends AbstractNode implements BranchNodeInterface, MenuNo
 	private array $leaves = [];
 	private array $branches = [];
 
+	private bool $isCurrentBranch;
+
 	public function __construct(
 		public readonly string $slug,
-		public readonly string $label
+		public readonly string $label,
+		public readonly ?string $route = null,
+		public readonly array $routeParams = []
 	) {}
 
 	public function is_branch(): bool
 	{
 		return true;
+	}
+
+	public function is_current_branch(): bool
+	{
+		return $this->isCurrentBranch ?? false;
 	}
 
 	public function isAnonymous(): bool
@@ -62,11 +71,21 @@ class MenuBranchNode extends AbstractNode implements BranchNodeInterface, MenuNo
 
 	public function matchesRoute(string $routeName): bool
 	{
+		if( $routeName === $this->route ) {
+			$this->isCurrentBranch = true;
+
+			return true;
+		}
+
 		foreach( $this->leaves as $leaf ) {
 			if( $leaf->matchesRoute($routeName) ) {
+				$this->isCurrentBranch = true;
+
 				return true;
 			}
 		}
+
+		$this->isCurrentBranch = false;
 
 		return false;
 	}
