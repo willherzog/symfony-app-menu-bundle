@@ -2329,12 +2329,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/willherzog/generic-tree-builder.git",
-                "reference": "e22ff7080b89df2b24249842b35bf4a2b34ec4de"
+                "reference": "fe788ab4ba82a576f123ecbfd5391ffb48325263"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/willherzog/generic-tree-builder/zipball/e22ff7080b89df2b24249842b35bf4a2b34ec4de",
-                "reference": "e22ff7080b89df2b24249842b35bf4a2b34ec4de",
+                "url": "https://api.github.com/repos/willherzog/generic-tree-builder/zipball/fe788ab4ba82a576f123ecbfd5391ffb48325263",
+                "reference": "fe788ab4ba82a576f123ecbfd5391ffb48325263",
                 "shasum": ""
             },
             "require": {
@@ -2357,12 +2357,12 @@
                     "role": "Developer"
                 }
             ],
-            "description": "A collection of PHP interfaces (and a couple concrete classes) to facilitate creating \"tree-building\" solutions.",
+            "description": "A collection of PHP interfaces (and a couple concrete classes) to facilitate creating custom \"tree builder\" solutions.",
             "support": {
                 "source": "https://github.com/willherzog/generic-tree-builder/tree/main",
                 "issues": "https://github.com/willherzog/generic-tree-builder/issues"
             },
-            "time": "2024-09-17T00:33:48+00:00"
+            "time": "2025-06-27T22:32:41+00:00"
         }
     ],
     "packages-dev": [],
